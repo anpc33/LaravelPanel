@@ -26,19 +26,15 @@ class AuthController extends Controller
             $request->session()->regenerate();
 
             if (Auth::user()->role === 'admin') {
-                return redirect()->intended('/admin'); // Chuyển hướng linh hoạt hơn
+                return redirect()->route('admin.dashboard')->with('success', 'Đăng nhập thành công');
             }
 
             // Nếu không phải admin, đăng xuất và thông báo
             Auth::logout();
-            return redirect('/login')->withErrors([
-                'email' => 'You do not have permission to access the admin area.',
-            ]);
+            return redirect('/login')->with('error', 'Bạn không có quyền truy cập vào trang này');
         }
 
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ])->onlyInput('email');
+        return redirect('/login')->with('error', 'Sai tài khoản hoặc mật khẩu');
     }
 
     public function showRegistrationForm()

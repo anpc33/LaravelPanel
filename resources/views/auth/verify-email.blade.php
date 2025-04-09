@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,11 +16,13 @@
             align-items: center;
             justify-content: center;
         }
+
         .verify-container {
             max-width: 400px;
             width: 100%;
             padding: 2rem;
         }
+
         .card {
             border: none;
             border-radius: 10px;
@@ -27,6 +30,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="verify-container">
         <div class="card">
@@ -39,24 +43,24 @@
                 </div>
 
                 @if (session('resent'))
-                    <div class="alert alert-success">
-                        Một liên kết xác thực mới đã được gửi đến địa chỉ email của bạn.
-                    </div>
+                <div class="alert alert-success">
+                    Một liên kết xác thực mới đã được gửi đến địa chỉ email của bạn.
+                </div>
                 @endif
 
                 <p class="text-center">
                     Nếu bạn không nhận được email,
-                    <form action="{{ route('verification.resend') }}" method="POST" class="d-inline">
-                        @csrf
-                        <button type="submit" class="btn btn-link p-0 m-0 align-baseline">
-                            bấm vào đây để yêu cầu gửi lại
-                        </button>
-                    </form>
+                <form action="{{ route('verification.resend') }}" method="POST" class="d-inline">
+                    @csrf
+                    <button type="submit" class="btn btn-link p-0 m-0 align-baseline">
+                        bấm vào đây để yêu cầu gửi lại
+                    </button>
+                </form>
                 </p>
 
                 <div class="text-center mt-3">
                     <a href="{{ route('logout') }}" class="text-decoration-none"
-                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         Đăng xuất
                     </a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -69,5 +73,9 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>
+
 </html>
